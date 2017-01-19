@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lala-Fly</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="src/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+<!--   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+</head>
+<body>
+
+<!-- <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<div class="page-header">
+  <img src="img/logo.png" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+  
+</div>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <!--BUSCADOR-->
+    
+    <div class="col-sm-4 sidenav">
+    <h1>Buscador</h1>
+
+    <div class="well">
+    <form class="form-horizontal" role="form">
+       <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Aeropuerto de Salida:</label>
+    <div class="col-lg-7">
+      <select class="form-control" id="selASalida">
+    
+      </select>
+    </div>
+  </div>
+   <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Aeropuerto de Llegada:</label>
+    <div class="col-lg-7">
+      <select class="form-control" id="selALlegada">
+    
+      </select>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha de Salida:</label>
+    <div class="col-lg-7">
+      <input class="form-control" type="date" id="from" name="from"><!--JqueryUI-->
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha de Llegada:</label>
+    <div class="col-lg-7">
+      <input class="form-control" type="date" id="to" name="to"><!--JqueryUI-->
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Hora de Llegada:</label>
+    <div class="col-lg-7">
+      <input class="form-control" type="text" id="txtHoraSalida"><!--JqueryUI-->
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Hora de Llegada:</label>
+    <div class="col-lg-7">
+      <input class="form-control" type="text" id="txtHoraLlegada" ><!--JqueryUI-->
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Nº de pasajeros:</label>
+    <div class="col-lg-7">
+      <select class="form-control" id="selALlegada">
+    
+      </select>
+    </div>
+  </div>
+
+     <div class="form-group">
+    <label for="ejemplo_email_3" class="col-lg-5 control-label">Aerolínea:</label>
+    <div class="col-lg-7">
+       <input class="form-control" type="text" id="txtAerolinea" ><!--JqueryUI-->
+    </div>
+  </div>
+
+<button type="button" class="btn btn-primary btn-lg">Buscar</button>
+
+
+      
+    </form>
+    </div>
+    </div>
+<div class="col-sm-4 sidenav">
+    
+      <h1>Vuelos Disponibles</h1>
+      
+  <div class="well">
+
+  <ul class="nav nav-tabs">
+   
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" class="active" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade in active">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+
+
+</div>
+     
+      
+    </div>
+    <div class="col-sm-4 sidenav">
+    <h1>Reserva</h1>
+      <div class="well">
+        <h3>Datos del Vuelo:</h3>
+        <div class="form-group">
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Nº de Vuelo:</label>
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Aeropuerto de Origen:</label>
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Aeropuerto de Destino:</label>
+        </div>
+        <div class="form-group">
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Hora de Salida:</label>
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Hora de Llegada:</label>
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Compañía:</label>
+            <label for="ejemplo_email_3" class="col-lg-5 control-label">Precio:</label>
+        </div>
+
+      </div>
+
+      <div class="well">
+        <h3>Datos Personales:</h3>
+
+      <div class="form-group">
+        <label for="ejemplo_email_3" class="col-lg-5 control-label">Nombre:</label>
+          <div class="col-lg-7">
+            <input class="form-control" type="text" id="txtNombre">
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ejemplo_email_3" class="col-lg-5 control-label">Primer Apellido:</label>
+        <div class="col-lg-7">
+          <input class="form-control" type="text" id="txtApellido1">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ejemplo_email_3" class="col-lg-5 control-label">Segundo Apellido:</label>
+        <div class="col-lg-7">
+          <input class="form-control" type="text" id="txtApellido2">
+        </div>
+      </div>
+
+     <div class="control-group">
+            <label class="control-label">Card Number</label>
+            <div class="controls">
+              <div class="row-fluid">
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+                </div>
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+                </div>
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+                </div>
+                <div class="span3">
+                  <input type="text" class="input-block-level" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <div class="form-group">
+        <label for="ejemplo_email_3" class="col-lg-5 control-label">Teléfono:</label>
+        <div class="col-lg-7">
+          <input class="form-control" type="text" id="txtTelefono">
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>2º Desarrollo de Aplicaciones Web B</p>
+</footer>
+
+</body>
+</html>
