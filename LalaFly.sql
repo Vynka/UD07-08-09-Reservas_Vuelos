@@ -52,8 +52,8 @@ DROP TABLE IF EXISTS `lalafly`.`vueloGenerico` ;
 
 CREATE TABLE IF NOT EXISTS `lalafly`.`vueloGenerico` (
   `nVuelo` INT NULL,
-  `horaSalida` DATE NULL,
-  `horaLlegada` DATE NULL,
+  `horaSalida` time NULL,
+  `horaLlegada` time NULL,
   `precio` DECIMAL NULL,
   `capacidad` INT NULL,
   `idOrigen` INT NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `lalafly`.`aerolinea` (
   `idAerolinea` INT NOT NULL auto_increment,
   `codigo` varchar(3) NULL,
   `nombre` VARCHAR(45) NULL,
-  `idVueloGenerico` INT NOT NULL,
+  `idVueloGenerico` INT NULL,
   CONSTRAINT PK_aerolinea_idAerolinea PRIMARY KEY (`idAerolinea`));
   
 ALTER TABLE aerolinea ADD CONSTRAINT FK_aerolinea_aerolinea_idAerolinea FOREIGN KEY
@@ -90,7 +90,7 @@ ALTER TABLE aerolinea ADD CONSTRAINT FK_aerolinea_aerolinea_idAerolinea FOREIGN 
 DROP TABLE IF EXISTS `lalafly`.`vuelo` ;
 
 CREATE TABLE IF NOT EXISTS `lalafly`.`vuelo` (
-  `idVuelo` INT NOT NULL,
+  `idVuelo` INT NOT NULL auto_increment, 
   `fecha` DATE NULL,
   `plazasLibres` INT NULL,
   `idVueloGenerico` INT NOT NULL,
@@ -107,7 +107,7 @@ ALTER TABLE vuelo ADD CONSTRAINT FK_vuelo_aerolinea_idVuelo FOREIGN KEY
 DROP TABLE IF EXISTS `lalafly`.`reservas` ;
 
 CREATE TABLE IF NOT EXISTS `lalafly`.`reservas` (
-  `idReservas` INT NOT NULL,
+  `idReservas` INT NOT NULL auto_increment,
   `nReserva` INT NULL,
   `nombre` VARCHAR(45) NULL,
   `apellido1` VARCHAR(45) NULL,
@@ -163,4 +163,33 @@ INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('GRX','Granada','10');
 INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('TFN','Los Rodeos Tenerife-Norte','11');
 INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('LPA','Gran Canaria','12');
 
-select * from aeropuerto;
+
+INSERT INTO aerolinea (codigo,nombre) VALUES ('AEA','Air Europa');
+INSERT INTO aerolinea (codigo,nombre) VALUES ('IBB','Binter');
+INSERT INTO aerolinea (codigo,nombre) VALUES ('IBE','Iberia');
+INSERT INTO aerolinea (codigo,nombre) VALUES ('JKK','Spanair');
+/*`nVuelo` INT NULL,
+  `horaSalida` DATE NULL,
+  `horaLlegada` DATE NULL,
+  `precio` DECIMAL NULL,
+  `capacidad` INT NULL,
+  `idOrigen` INT NOT NULL,
+  `idDestino` INT NOT NULL,
+  `idVueloGenerico` INT NOT NULL auto_increment,*/
+INSERT INTO vueloGenerico (nVuelo,horaSalida, horaLlegada, precio,capacidad,idOrigen,idDestino) VALUES (1,'12:00:00','14:00:00',50,100,11,12);
+INSERT INTO vueloGenerico (nVuelo,horaSalida, horaLlegada, precio,capacidad,idOrigen,idDestino) VALUES (2,'15:00:00','17:30:00',50,100,10,1);
+INSERT INTO vueloGenerico (nVuelo,horaSalida, horaLlegada, precio,capacidad,idOrigen,idDestino) VALUES (3,'17:00:00','19:30:00',60,200,2,3);
+INSERT INTO vueloGenerico (nVuelo,horaSalida, horaLlegada, precio,capacidad,idOrigen,idDestino) VALUES (4,'19:00:00','22:30:00',30,150,4,6);
+INSERT INTO vueloGenerico (nVuelo,horaSalida, horaLlegada, precio,capacidad,idOrigen,idDestino) VALUES (5,'11:00:00','13:30:00',40,100,9,8);
+
+/*`idVuelo` INT NOT NULL auto_increment, 
+  `fecha` DATE NULL,
+  `plazasLibres` INT NULL,
+  `idVueloGenerico` INT NOT NULL,*/
+INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-05',11,1);
+INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-06',20,2);
+INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-07',43,3);
+INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-08',25,4);
+INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-09',7,5);
+  
+select * from vueloGenerico;
