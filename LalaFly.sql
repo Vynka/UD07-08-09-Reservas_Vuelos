@@ -73,12 +73,15 @@ ALTER TABLE vueloGenerico ADD CONSTRAINT FK_vueloGenerico_destino FOREIGN KEY
 DROP TABLE IF EXISTS `lalafly`.`aerolinea` ;
 
 CREATE TABLE IF NOT EXISTS `lalafly`.`aerolinea` (
-  `idAerolinea` INT NOT NULL,
-  `codigo` INT NULL,
+  `idAerolinea` INT NOT NULL auto_increment,
+  `codigo` varchar(3) NULL,
   `nombre` VARCHAR(45) NULL,
-  `vueloGenerico_idVueloGenerico` INT NOT NULL,
-  PRIMARY KEY (`idAerolinea`, `vueloGenerico_idVueloGenerico`))
-ENGINE = InnoDB;
+  `idVueloGenerico` INT NOT NULL,
+  CONSTRAINT PK_aerolinea_idAerolinea PRIMARY KEY (`idAerolinea`));
+  
+ALTER TABLE aerolinea ADD CONSTRAINT FK_aerolinea_aerolinea_idAerolinea FOREIGN KEY
+(idVueloGenerico) REFERENCES vueloGenerico (idVueloGenerico) ON DELETE CASCADE;
+
 
 
 -- -----------------------------------------------------
@@ -90,9 +93,12 @@ CREATE TABLE IF NOT EXISTS `lalafly`.`vuelo` (
   `idVuelo` INT NOT NULL,
   `fecha` DATE NULL,
   `plazasLibres` INT NULL,
-  `vueloGenerico_idVueloGenerico` INT NOT NULL,
-  PRIMARY KEY (`idVuelo`, `vueloGenerico_idVueloGenerico`))
-ENGINE = InnoDB;
+  `idVueloGenerico` INT NOT NULL,
+CONSTRAINT PK_vuelo_idVuelo PRIMARY KEY (`idVuelo`));
+ALTER TABLE vuelo ADD CONSTRAINT FK_vuelo_aerolinea_idVuelo FOREIGN KEY
+(idVueloGenerico) REFERENCES vueloGenerico (idVueloGenerico) ON DELETE CASCADE;
+
+
 
 
 -- -----------------------------------------------------
@@ -109,10 +115,15 @@ CREATE TABLE IF NOT EXISTS `lalafly`.`reservas` (
   `telefono` INT NULL,
   `tarjeta` INT NULL,
   `importe` DECIMAL NULL,
-  `vuelo_idVuelo` INT NOT NULL,
-  `vuelo_vueloGenerico_idVueloGenerico` INT NOT NULL,
-  PRIMARY KEY (`idReservas`, `vuelo_idVuelo`, `vuelo_vueloGenerico_idVueloGenerico`))
-ENGINE = InnoDB;
+  `idVuelo` INT NOT NULL,
+  `idVueloGenerico` INT NOT NULL,
+  CONSTRAINT PK_vuelo_idVuelo PRIMARY KEY (`idReservas`));
+ALTER TABLE reservas ADD CONSTRAINT FK_reservas_vueloGenerico_idReservas FOREIGN KEY
+(idVueloGenerico) REFERENCES vueloGenerico (idVueloGenerico) ON DELETE CASCADE;
+ALTER TABLE reservas ADD CONSTRAINT FK_reservas_vuelo_idReservas FOREIGN KEY
+(idVuelo) REFERENCES vuelo (idVuelo) ON DELETE CASCADE;
+
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
