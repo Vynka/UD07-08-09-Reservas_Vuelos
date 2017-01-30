@@ -24,9 +24,9 @@ USE `lalafly` ;
 DROP TABLE IF EXISTS `lalafly`.`ciudad` ;
 
 CREATE TABLE IF NOT EXISTS `lalafly`.`ciudad` (
-  `idCiudad` INT NOT NULL,
+  `idCiudad` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
-  PRIMARY KEY (`idCiudad`))
+  CONSTRAINT PK_ciudad_idCiudad PRIMARY KEY (`idCiudad`))
 ENGINE = InnoDB;
 
 
@@ -36,14 +36,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `lalafly`.`aeropuerto` ;
 
 CREATE TABLE IF NOT EXISTS `lalafly`.`aeropuerto` (
-  `idAeropuerto` INT NOT NULL,
-  `codigo` INT NULL,
+  `idAeropuerto` INT NOT NULL AUTO_INCREMENT,
+  `codigo` VARCHAR(3) NULL,
   `nombre` VARCHAR(45) NULL,
-  `categoria` INT NULL,
-  `ciudad_idCiudad` INT NOT NULL,
-  PRIMARY KEY (`idAeropuerto`, `ciudad_idCiudad`))
-ENGINE = InnoDB;
+  `idCiudad` INT NOT NULL,
+  CONSTRAINT PK_aeropuerto_idAeropuerto PRIMARY KEY (`idAeropuerto`));
 
+ALTER TABLE aeropuerto ADD CONSTRAINT FK_aeropuerto_ciudad_idCiudad FOREIGN KEY
+(idCiudad) REFERENCES ciudad (idCiudad) ON DELETE CASCADE;
 
 -- -----------------------------------------------------
 -- Table `lalafly`.`vueloGenerico`
@@ -56,12 +56,16 @@ CREATE TABLE IF NOT EXISTS `lalafly`.`vueloGenerico` (
   `horaLlegada` DATE NULL,
   `precio` DECIMAL NULL,
   `capacidad` INT NULL,
-  `idVueloGenerico` INT NOT NULL,
-  `aeropuerto_idAeropuerto` INT NOT NULL,
-  `aeropuerto_ciudad_idCiudad` INT NOT NULL,
-  PRIMARY KEY (`idVueloGenerico`, `aeropuerto_idAeropuerto`, `aeropuerto_ciudad_idCiudad`))
-ENGINE = InnoDB;
+  `idOrigen` INT NOT NULL,
+  `idDestino` INT NOT NULL,
+  `idVueloGenerico` INT NOT NULL auto_increment,
+  CONSTRAINT PK_vueloGenerico_idVueloGenerico PRIMARY KEY (`idVueloGenerico`));
+  
+ALTER TABLE vueloGenerico ADD CONSTRAINT FK_vueloGenerico_origen FOREIGN KEY
+(idOrigen) REFERENCES aeropuerto (idAeropuerto) ON DELETE CASCADE;
 
+ALTER TABLE vueloGenerico ADD CONSTRAINT FK_vueloGenerico_destino FOREIGN KEY
+(idDestino) REFERENCES aeropuerto (idAeropuerto) ON DELETE CASCADE;
 
 -- -----------------------------------------------------
 -- Table `lalafly`.`aerolinea`
@@ -114,3 +118,38 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+use lalafly;
+INSERT INTO ciudad (nombre) VALUES ('Madrid');
+INSERT INTO ciudad (nombre) VALUES ('Barcelona');
+INSERT INTO ciudad (nombre) VALUES ('Valencia');
+INSERT INTO ciudad (nombre) VALUES ('Sevilla');
+INSERT INTO ciudad (nombre) VALUES ('Santiago de Compostela');
+INSERT INTO ciudad (nombre) VALUES ('León');
+INSERT INTO ciudad (nombre) VALUES ('Marbella');
+INSERT INTO ciudad (nombre) VALUES ('Alicante');
+INSERT INTO ciudad (nombre) VALUES ('Santander');
+INSERT INTO ciudad (nombre) VALUES ('Granada');
+INSERT INTO ciudad (nombre) VALUES ('Tenerife');
+INSERT INTO ciudad (nombre) VALUES ('Gran Canaria');
+/*`idAeropuerto` INT NOT NULL AUTO_INCREMENT,
+  `codigo` INT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `categoria` INT NULL,
+  `idCiudad` int not null*/
+
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('MAD','Adolfo Suárez Madrid-Barajas','1');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('BCN','Barcelona-El Prat','2');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('VLC','Valencia','3');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('SVQ','Sevilla','4');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('SCQ','Santiago de Compostela','5');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('LEN','León','6');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('QRL','Marbella','7');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('ALC','Alicante-Elche','8');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('SDR','Santander','9');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('GRX','Granada','10');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('TFN','Los Rodeos Tenerife-Norte','11');
+INSERT INTO aeropuerto (codigo,nombre,idCiudad) VALUES ('LPA','Gran Canaria','12');
+
+select * from aeropuerto;
