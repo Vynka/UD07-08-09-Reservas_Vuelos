@@ -193,3 +193,7 @@ INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-08',25,
 INSERT INTO vuelo (fecha,plazasLibres, idVueloGenerico) VALUES ('2017-02-09',7,5);
   
 select * from vueloGenerico;
+
+ALTER TABLE vueloGenerico
+  ADD CONSTRAINT origen_cannot_be_equal_to_destino_CHK
+    CHECK (idOrigen <> idDestino) ;
