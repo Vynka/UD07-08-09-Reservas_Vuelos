@@ -3,7 +3,7 @@ $( function() {
       range: "min",
       value: 37,
       min: 1,
-      max: 700,
+      max: 750,
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.value );
       }
