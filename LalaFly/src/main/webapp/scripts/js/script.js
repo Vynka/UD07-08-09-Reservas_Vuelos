@@ -5,15 +5,15 @@ $( function() {
       min: 1,
       max: 750,
       slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.value );
+        $( "#amount" ).val(  ui.value+ "€" );
       }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+    $( "#amount" ).val( $( "#slider-range-min" ).slider( "value" )+ "€"  );
   } );
   
   $( function() {
     var dateFormat = "mm/dd/yy",
-      from = $( "#from" )
+      from = $( "#fechaSalida" )
         .datepicker({
           defaultDate: "+1w",
           changeMonth: true,
@@ -22,7 +22,7 @@ $( function() {
         .on( "change", function() {
           to.datepicker( "option", "minDate", getDate( this ) );
         }),
-      to = $( "#to" ).datepicker({
+      to = $( "#fechaLlegada" ).datepicker({
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 3

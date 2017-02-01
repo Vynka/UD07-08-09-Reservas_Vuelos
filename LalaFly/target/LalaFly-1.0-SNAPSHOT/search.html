@@ -15,7 +15,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="resources/css/style.css">
         <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
     </head>
-    <body>
+    <body onload="refreshAeropuertoList();refreshAerolineaList()">
         <div class="page-header">
             <img src="resources/img/logo.png" class="img-rounded" alt="Cinque Terre" width="304" height="236" id="logo">
 
@@ -30,6 +30,7 @@ and open the template in the editor.
 
                     <div class="well">
                         <form class="form-horizontal" role="form">
+                            
                             <div class="form-group">
                                 <label for="selectAeropuerto" class="col-lg-5 control-label">Aeropuerto de Salida:</label>
                                 <div class="col-lg-7">
@@ -39,7 +40,7 @@ and open the template in the editor.
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Aeropuerto de Llegada:</label>
+                                <label for="selectAeropuerto" class="col-lg-5 control-label">Aeropuerto de Llegada:</label>
                                 <div class="col-lg-7">
                                     <select class="form-control" id="selALlegada">
 
@@ -48,46 +49,51 @@ and open the template in the editor.
                             </div>
 
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha de Salida:</label>
+                                <label for="selectFSalida" class="col-lg-5 control-label">Fecha de Salida:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control" type="text" id="from" name="from">
+                                    <input class="form-control" type="text" id="fechaSalida" name="from">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Fecha de Llegada:</label>
+                                <label for="selectFLlegada" class="col-lg-5 control-label">Fecha de Llegada:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control" type="text" id="to" name="to">
+                                    <input class="form-control" type="text" id="fechaLlegada" name="to">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Hora de Salida:</label>
+                                <label for="horaSalida" class="col-lg-5 control-label">Hora de Salida:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control" type="text" id="basicExample"><!--JqueryUI-->
+                                    <input class="form-control" type="text" id="horaSalida">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Hora de Llegada:</label>
+                                <label for="horaLlegada" class="col-lg-5 control-label">Hora de Llegada:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control" type="text" id="txtHoraLlegada" ><!--JqueryUI-->
+                                    <input class="form-control" type="text" id="horaLlegada" >
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Nº de pasajeros:</label>
+                                <label for="numPasajero" class="col-lg-5 control-label">Nº de pasajeros:</label>
                                 <div class="col-lg-7">
-                                    <select class="form-control" id="selALlegada">
-
+                                    <select class="form-control" id="numPasajero">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="ejemplo_email_3" class="col-lg-5 control-label">Aerolínea:</label>
+                                <label for="selectAerolinea" class="col-lg-5 control-label">Aerolínea:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control" type="text" id="txtAerolinea" ><!--JqueryUI-->
+                                    <select class="form-control" id="selectAerolinea">
+
+                                    </select>
                                 </div>
                             </div>
                             
@@ -221,6 +227,7 @@ and open the template in the editor.
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <script type="text/javascript" src="scripts/js/script.js"></script>
+        <script type="text/javascript" src="scripts/js/ajax.js"></script>
         <script type="text/javascript" src="scripts/js/jquery.timepicker.js"></script>
 
     </body>

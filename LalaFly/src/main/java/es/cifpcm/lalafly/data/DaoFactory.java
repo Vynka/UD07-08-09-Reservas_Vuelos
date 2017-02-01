@@ -6,7 +6,7 @@
 package es.cifpcm.lalafly.data;
 
 
-import es.cifpcm.lalafly.data.mysqlDao.MySqlAeropuertoDao;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -78,9 +78,7 @@ public class DaoFactory implements ConnectionProvider {
         }
     }
 
-    public MySqlAeropuertoDao getAeropuertoDao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
 
 

@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
  * @author 2dawb
  */
 @Stateless
-@Path("es.cifpcm.lalafly.data.entities.reservas")
+@Path("reservas")
 public class ReservasFacadeREST extends AbstractFacade<Reservas> {
 
     @PersistenceContext(unitName = "es.cifpcm_LalaFly_war_1.0-SNAPSHOTPU")
@@ -37,14 +37,14 @@ public class ReservasFacadeREST extends AbstractFacade<Reservas> {
 
     @POST
     @Override
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void create(Reservas entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Reservas entity) {
         super.edit(entity);
     }
@@ -57,21 +57,21 @@ public class ReservasFacadeREST extends AbstractFacade<Reservas> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Reservas find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Reservas> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Reservas> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
